@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ДОЛ "Менги Чечээ" | Официальный сайт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #e8f0ec 0%, #d4e2da 100%);
+            color: #1e2f2a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* шапка — альпийский стиль */
+        .header {
+            background: linear-gradient(135deg, #1b4d3b 0%, #3b7b5e 50%, #5c9e7c 100%);
+            color: white;
+            padding: 1.2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #f2d16b;
+        }
+        .header .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .logo h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .logo p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        .badge {
+            background: #ffd966;
+            color: #1e4a2f;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        /* навигация — тёмный лес */
+        .nav {
+            background: #2c5e4a;
+            position: sticky;
+            top: 80px;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 8px;
+            padding: 10px 0;
+        }
+        .nav ul li a {
+            display: inline-block;
+            padding: 8px 16px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: background 0.2s;
+        }
+        .nav ul li a:hover {
+            background: #f2c94c;
+            color: #1e3a1e;
+        }
+
+        main {
+            padding: 40px 0 60px;
+        }
+        section {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(0, 32, 16, 0.12);
+            margin-bottom: 40px;
+            padding: 28px 32px;
+            transition: 0.1s;
+            scroll-margin-top: 140px;
+            backdrop-filter: blur(0px);
+            border: 1px solid rgba(210, 230, 210, 0.6);
+        }
+        h2 {
+            font-size: 1.9rem;
+            color: #1b5e3f;
+            border-left: 6px solid #e9b741;
+            padding-left: 20px;
+            margin-bottom: 24px;
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin: 20px 0 12px 0;
+            color: #2c6e4f;
+            border-bottom: 2px solid #deecd8;
+            padding-bottom: 6px;
+        }
+        .subgrid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .info-card {
+            background: #fefdf7;
+            padding: 16px 20px;
+            border-radius: 24px;
+            border: 1px solid #cfebdb;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .info-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .info-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #cfebdb;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .info-list li strong {
+            width: 280px;
+            color: #1b5e3f;
+        }
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .doc-item {
+            background: #f2faf5;
+            border-radius: 18px;
+            padding: 12px 16px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1b5e3f;
+            font-weight: 500;
+            transition: 0.1s;
+            border: 1px solid #c2dfcf;
+        }
+        .doc-item::before {
+            content: "📄";
+            font-size: 1.2rem;
+        }
+        .doc-item:hover {
+            background: #e6f3ec;
+            transform: translateY(-1px);
+        }
+        .staff-category {
+            background: #fafaf5;
+            border-radius: 20px;
+            padding: 12px 20px;
+        }
+        .staff-category h4 {
+            font-size: 1.2rem;
+            color: #b45f06;
+            margin-bottom: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td, th {
+            padding: 10px 8px;
+            vertical-align: top;
+            border-bottom: 1px solid #d0e6da;
+            text-align: left;
+        }
+        .contact-line {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            background: #eef6f0;
+            border-radius: 28px;
+            padding: 20px;
+            margin-top: 8px;
+        }
+        footer {
+            background: #1b4d3b;
+            color: #cfe6db;
+            text-align: center;
+            padding: 32px 0;
+            font-size: 0.85rem;
+            border-top: 2px solid #e9b741;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 0 16px;
+            }
+            section {
+                padding: 20px;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .info-list li strong {
+                width: 100%;
+            }
+        }
+        .print-disclaimer {
+            background: #fff9e8;
+            border-left: 4px solid #e9b741;
+            padding: 12px 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            border-radius: 20px;
+        }
+        button.scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            background: #e9b741;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+            color: #1e3a1e;
+        }
+        .mountain-bg {
+            background: radial-gradient(ellipse at 20% 30%, rgba(230, 245, 235, 0.3) 0%, rgba(200, 225, 210, 0.2) 100%);
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <h1>🏔️ ДОЛ «Менги Чечээ»</h1>
+            <p>Загородный стационарный лагерь · Монгун-Тайга</p>
+        </div>
+        <div class="badge">Приказ Минпросвещения №201 от 14.03.2025</div>
+    </div>
+</div>
+
+<div class="nav">
+    <div class="container">
+        <ul>
+            <li><a href="#about">Об организации</a></li>
+            <li><a href="#activity">Деятельность</a></li>
+            <li><a href="#material">Материально-техническое обеспечение</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#accessible">Доступная среда</a></li>
+            <li><a href="#other">Иная информация</a></li>
+        </ul>
+    </div>
+</div>
+
+<main class="container mountain-bg">
+    <div class="print-disclaimer">
+        ✅ Официальный сайт детского оздоровительного лагеря «Менги Чечээ» создан в соответствии с Примерной структурой, утвержденной Приказом Минпросвещения РФ от 14 марта 2025 г. N 201. Информация актуальна на 2026 год.
+    </div>
+
+    <!-- РАЗДЕЛ 1: Об организации отдыха детей и их оздоровления -->
+    <section id="about">
+        <h2>📋 Об организации отдыха детей и их оздоровления</h2>
+        <div class="subgrid">
+            <div class="info-card">
+                <h3>📌 Основные сведения</h3>
+                <ul class="info-list">
+                    <li><strong>Полное наименование:</strong> Детский оздоровительный лагерь "Менги Чечээ" ГБУ РТ "Центр социальной помощи семье и детям Монгун-Тайгинского района"</li>
+                    <li><strong>Сокращённое наименование:</strong> ДОЛ "Менги Чечээ"</li>
+                    <li><strong>Руководитель:</strong> Чамзы Чинчи Алексеевна</li>
+                    <li><strong>Организационно-правовая форма:</strong> Государственное бюджетное учреждение</li>
+                    <li><strong>Тип организации отдыха:</strong> загородный стационарный лагерь</li>
+                    <li><strong>Адрес (место нахождения):</strong> Республика Тыва, Монгун-Тайгинский район, с. Мугур-Аксы, местность Ак-Хол</li>
+                    <li><strong>Режим работы:</strong> Сезонный</li>
+                    <li><strong>График работы администрации:</strong> рабочие дни с 08:30 до 17:30</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>📑 Документы</h3>
+                <div class="doc-grid">
+                    <a href="#" class="doc-item" target="_blank">📄 Учредительные документы (скан-копия)</a>
+                    <a href="#" class="doc-item" target="_blank">📄 Правила нахождения на территории</a>
+                    <a href="#" class="doc-item" target="_blank">📄 Программа воспитательной работы</a>
+                    <a href="#" class="doc-item" target="_blank">📄 Календарный план воспитательной работы</a>
+                </div>
+                <p style="font-size:0.8rem; margin-top:10px;">* Электронные копии документов будут размещены после утверждения. Ссылки на PDF-файлы предоставляются по запросу.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>👥 Руководство</h3>
+                <ul class="info-list">
+                    <li><strong>Руководитель организации:</strong> Чамзы Чинчи Алексеевна</li>
+                    <li><strong>Начальник лагеря:</strong> Салчак Олча Эресовна</li>
+                    <li><strong>Начальник (юридическое сопровождение):</strong> Созур-оол Айдыс Салчакович</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🧑‍🏫 Педагогический и вожатский состав</h3>
+                <div class="staff-category">
+                    <h4>Основные сотрудники</h4>
+                    <table style="width:100%">
+                        <thead>
+                            <tr><th>ФИО</th><th>Должность</th><th>Образование / Специальность</th><th>Квалификация</th><th>Ответственный за ОВЗ</th><th>Функции</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Салчак Чаяана Ивановна</td><td>педагог-психолог</td><td>высшее, психолог</td><td>в соответствии с дипломом</td><td>Куулар Анжела Вячеславовна</td><td>помощь</td></tr>
+                            <tr><td>Салчак Олча Эресовна</td><td>начальник</td><td>высшее, социальная работа</td><td>-</td><td>Куулар Анжела Вячеславовна</td><td>помощь</td></tr>
+                            <tr><td>Созур-оол Айдыс Салчакович</td><td>начальник</td><td>высшее, юрист</td><td>-</td><td>Куулар Анжела Вячеславовна</td><td>помощь</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="staff-category">
+                    <h4>Сотрудник, ответственный за доступную среду (ОВЗ/инвалиды)</h4>
+                    <p><strong>Куулар Анжела Вячеславовна</strong> — ответственный за доступность, сопровождение и оказание помощи детям с ОВЗ и детям-инвалидам.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>📞 Контакты</h3>
+                <div class="contact-line">
+                    <span>📞 Телефон: 8 (999) 124-43-73</span>
+                    <span>✉️ E-mail: monguntajga.sid@mail.ru</span>
+                    <span>📮 Почтовый адрес: 668020, Республика Тыва, Монгун-Тайгинский район, с. Мугур-Аксы, ул. Кошкар-оол, д. 33</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 2: Деятельность -->
+    <section id="activity">
+        <h2>🏕️ Деятельность</h2>
+        <ul class="info-list">
+            <li><strong>Возрастная категория детей:</strong> от 7 до 15 лет</li>
+            <li><strong>Даты проведения смен на календарный год:</strong> 1 смена: 17.06.2026 – 07.07.2026; 2 смена: 10.07.2026 – 30.07.2026; 3 смена: 02.08.2026 – 22.08.2026</li>
+            <li><strong>Реализуемые дополнительные образовательные программы:</strong> В рамках воспитательной работы (программа прилагается в разделе "Документы")</li>
+            <li><strong>Дополнительные оздоровительные программы:</strong> 5-разовое питание по СанПиН, спортивно-оздоровительные мероприятия, кружки</li>
+            <li><strong>Методические разработки:</strong> Планы воспитательной работы, сценарии мероприятий, программы по инклюзивному отдыху</li>
+        </ul>
+    </section>
+
+    <!-- РАЗДЕЛ 3: Материально-техническое обеспечение -->
+    <section id="material">
+        <h2>🏢 Материально-техническое обеспечение и оснащенность</h2>
+        <ul class="info-list">
+            <li><strong>Дата ввода в эксплуатацию объектов:</strong> данные уточняются</li>
+            <li><strong>Дата последнего капитального ремонта:</strong> 2020 год</li>
+            <li><strong>Условия проживания детей:</strong> 5 корпусов, 50 койко-мест, печное отопление, установлены автономно-пожарные извещатели (по 1 шт. в каждом корпусе), питьевая вода в пищеблоке (кулер)</li>
+            <li><strong>Условия питания детей:</strong> 5-разовое меню, соответствующее всем нормам СанПиН</li>
+            <li><strong>Наличие оборудованных учебных кабинетов:</strong> не имеется</li>
+            <li><strong>Наличие объектов для практических занятий:</strong> не имеется</li>
+            <li><strong>Наличие библиотек:</strong> не имеется</li>
+            <li><strong>Наличие объектов спорта:</strong> не имеется (используются природные условия, организуются подвижные игры на свежем воздухе)</li>
+            <li><strong>Материально-техническое обеспечение территории для оздоровительной деятельности:</strong> игровые зоны на открытом воздухе, столовая, корпуса для проживания, места для проведения отрядных мероприятий</li>
+        </ul>
+    </section>
+
+    <!-- РАЗДЕЛ 4: Услуги, в том числе платные -->
+    <section id="services">
+        <h2>💰 Услуги, предоставляемые организацией</h2>
+        <ul class="info-list">
+            <li><strong>Порядок оказания платных услуг:</strong> Платные услуги не оказываются. Деятельность осуществляется в рамках государственного задания.</li>
+            <li><strong>Средняя стоимость одного дня пребывания:</strong> Бесплатно (бюджетное финансирование)</li>
+            <li><strong>Сведения о компенсации стоимости услуг:</strong> Не предусмотрена</li>
+            <li><strong>Перечень документов ребенка для зачисления:</strong> заявление установленного образца, копия документа, удостоверяющего личность ребенка (свид. о рождении/паспорт), копия документа законного представителя, копия прививочного сертификата, медицинская справка установленного образца; для льготных категорий: для детей-сирот — документы о статусе, для детей-инвалидов — справка МСЭ, удостоверение многодетной семьи, удостоверение ветерана боевых действий, справка о безработице.</li>
+            <li><strong>Перечень одежды, обуви и гигиенических принадлежностей:</strong> одежда по сезону, спортивная форма, головной убор, купальник/плавки, сменная обувь, предметы личной гигиены (зубная паста, мыло, шампунь), полотенце, средства от насекомых.</li>
+        </ul>
+    </section>
+
+    <!-- РАЗДЕЛ 5: Доступная среда (горный инклюзив) -->
+    <section id="accessible">
+        <h2>♿ Доступная среда</h2>
+        <div class="info-card">
+            <ul class="info-list">
+                <li><strong>Специальные условия отдыха для детей с ОВЗ и инвалидов:</strong> разработаны индивидуальные маршруты, тьюторское сопровождение (ответственный Куулар Анжела Вячеславовна)</li>
+                <li><strong>Специальные условия охраны здоровья:</strong> возможность предоставления лечебного питания, контроль приема лекарств, наличие медработника</li>
+                <li><strong>Условия для хранения лекарств и лечебного питания:</strong> оборудованное медикаментозное хранилище, холодильники для специализированных продуктов</li>
+                <li><strong>Специально оборудованные помещения и объекты:</strong> пандусы на входах, расширенные дверные проемы</li>
+                <li><strong>Материально-технические средства для детей с ОВЗ:</strong> аудиокниги, крупный шрифт, специальные клавиатуры, тактильные пособия</li>
+                <li><strong>Беспрепятственный доступ к водным объектам:</strong> природные водоёмы требуют сопровождения</li>
+                <li><strong>Организация сопровождения ассистентом:</strong> Есть</li>
+                <li><strong>Возможность самостоятельного передвижения по территории:</strong> Есть (обеспечено частично: грунтовые дорожки, пандусы)</li>
+                <li><strong>Посадка/высадка из транспорта (в т.ч. с коляской):</strong> Помощь ассистента</li>
+                <li><strong>Доступ к информационным системам (адаптированный):</strong> адаптированная версия сайта, экранные дикторы, лупы</li>
+                <li><strong>Оборудование для беспрепятственного доступа:</strong> мнемосхемы, информационные таблички со шрифтом Брайля, звуковые маячки</li>
+                <li><strong>Дублирование информации шрифтом Брайля:</strong> дублируется</li>
+                <li><strong>Допуск собаки-проводника:</strong> допускается при наличии документа установленного образца, условия пребывания согласовываются с администрацией</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- РАЗДЕЛ 6: Иная информация -->
+    <section id="other">
+        <h2>📌 Иная информация</h2>
+        <p>В соответствии с законодательством Российской Федерации и по решению организации дополнительно размещены следующие сведения:</p>
+        <ul class="info-list">
+            <li><strong>Сведения об отсутствии платных услуг:</strong> Все услуги предоставляются бесплатно в рамках государственного задания.</li>
+            <li><strong>Особенности расположения:</strong> Лагерь находится в высокогорной местности у подножия Монгун-Тайги, уникальные природно-климатические условия.</li>
+            <li><strong>Вакансии:</strong> Актуальная информация о вакансиях размещена на стенде учреждения.</li>
+            <li><strong>Противодействие коррупции:</strong> План мероприятий доступен по запросу.</li>
+            <li><strong>Инклюзивная практика:</strong> Индивидуальные маршруты, тьюторское сопровождение (ответственный Куулар Анжела Вячеславовна).</li>
+            <li><strong>Экологическое воспитание:</strong> Программы, направленные на бережное отношение к природе горной зоны.</li>
+        </ul>
+        <div class="print-disclaimer" style="margin-top:16px;">
+            🔍 Все разделы и подразделы сформированы в соответствии с п. 1–11 Примерной структуры Приказа №201. Информация представлена в виде иерархического списка и текстовых блоков.
+        </div>
+    </section>
+
+    <div style="background:#e1efdf; border-radius:28px; padding: 20px; margin-top: 20px;">
+        <p style="font-size:0.9rem;"><strong>⚖️ В соответствии с п.13 Приказа №201:</strong> Если организация отдыха создана как структурное подразделение на базе образовательной организации, на официальном сайте образовательной организации создается специализированный раздел. Данный сайт может использоваться как отдельный ресурс.</p>
+        <p style="font-size:0.85rem; margin-top:8px;">🏔️ ДОЛ «Менги Чечээ» — стационарный загородный лагерь в живописном месте Монгун-Тайгинского района.</p>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 ГБУ РТ "Центр соцпомощи семье и детям Монгун-Тайгинского района" — ДОЛ «Менги Чечээ». Официальный сайт организации отдыха детей и их оздоровления.</p>
+        <p>Все материалы соответствуют требованиям Приказа Минпросвещения РФ от 14 марта 2025 г. № 201. Срок действия приказа до 1 марта 2031 г.</p>
+        <p>668020, Республика Тыва, Монгун-Тайгинский район, с. Мугур-Аксы, м. Ак-Хол | Тел.: 8 (999) 124-43-73 | e-mail: monguntajga.sid@mail.ru</p>
+    </div>
+</footer>
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Наверх</button>
+
+<script>
+    document.querySelectorAll('.nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+            if(targetId && targetId !== '#') {
+                const targetElem = document.querySelector(targetId);
+                if(targetElem) {
+                    e.preventDefault();
+                    targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
